@@ -4,12 +4,9 @@ class Api::UsersController < ApiController
   def create
     @user = User.new(user_params)
     @user.skip_confirmation!
+    @user.save
 
-    if @user.save
-      respond_with(@user, location: nil)
-    else
-      respond_with(@user, status: 422)
-    end
+    respond_with(@user, location: nil)
   end
 
   private
