@@ -1,11 +1,11 @@
 !!!
 %html
   %head
-    %meta{:content => "width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no", :name => "viewport"}/
-    %title= @title || "Wl"
+    %meta{ content: 'width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no', name: 'viewport' }/
+    %title= @title || 'Workouts'
     = favicon_link_tag 'favicon.ico'
-    = stylesheet_link_tag "application", media: "all", "data-turbolinks-track" => true
-    = javascript_include_tag "application", "data-turbolinks-track" => true
+    = stylesheet_link_tag 'application', media: 'all', 'data-turbolinks-track' => true
+    = javascript_include_tag 'application', 'data-turbolinks-track' => true
     = csrf_meta_tags
   %body
     #wrap
