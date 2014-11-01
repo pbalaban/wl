@@ -3,6 +3,11 @@
   %li= link_to "Sign up", new_user_registration_path
 - else
   %li= link_to "Places", places_path
+  - if @place.present?
+    %li= link_to "Exercises", [@place, :exercises]
+    %li= link_to "Workouts", [@place, :workouts]
+    - if @place.current_workout
+      %li= link_to "Active workout", [@place, @place.current_workout]
   %li= link_to "Edit your account", edit_user_registration_path
   - if current_user.admin?
     %li= link_to "Admin", admin_root_path
