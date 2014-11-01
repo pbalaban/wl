@@ -19,21 +19,34 @@ gem 'friendly_id', '5.0.4'
 gem 'kaminari', '0.16.1'
 gem 'devise', '3.4.1'
 
-group :development, :test do
-  gem 'figaro', '1.0.0'
-end
-
-group :development do
-  gem 'spring'
-  gem 'pry-rails'
-  gem 'pry-nav'
-  gem 'thin'
-  gem 'better_errors'
-  gem 'binding_of_caller'
-  gem 'quiet_assets'
-end
-
 group :production do
   gem 'rails_12factor'
   gem 'unicorn'
 end
+
+group :development do
+  gem 'spring'
+  gem 'thin'
+  gem 'better_errors'
+  gem 'binding_of_caller'
+  gem 'quiet_assets'
+  gem 'guard-bundler', require: false
+  gem 'guard-rails', require: false
+  gem 'guard-rspec', require: false
+end
+
+group :development, :test do
+  gem 'factory_girl_rails'
+  gem 'faker'
+  gem 'figaro', '1.0.0'
+  gem 'pry-rails'
+  gem 'pry-rescue'
+  gem 'pry-nav'
+  gem 'rspec-rails'
+end
+
+group :test do
+  gem 'database_cleaner'
+  gem 'launchy'
+end
+
