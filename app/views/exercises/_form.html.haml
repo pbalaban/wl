@@ -14,6 +14,6 @@
   .field
     = f.label :values_type
     %br/
-    = f.number_field :values_type
+    = f.select :values_type, Exercise::VALUES_TYPES
   .actions
     = f.submit

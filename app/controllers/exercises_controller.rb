@@ -29,12 +29,12 @@ class ExercisesController < ApplicationController
 
   def update
     @exercise.update(exercise_params)
-    respond_with(@exercise)
+    respond_with([@place,@exercise])
   end
 
   def destroy
     @exercise.destroy
-    respond_with(@exercise)
+    respond_with([@place,@exercise])
   end
 
   private

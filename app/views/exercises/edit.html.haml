@@ -1,5 +1,5 @@
 %h1 Editing exercise
 = render 'form'
-= link_to 'Show', @exercise
+= link_to 'Show', [@place, @exercise]
 |
-\#{link_to 'Back', exercises_path}
+\#{link_to 'Back', place_exercises_path(@place)}

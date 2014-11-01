@@ -7,10 +7,9 @@ Wl::Application.routes.draw do
     end
   end
 
-  root "pages#home"
+  root "places#index"
 
   get 'home', to: 'devise/sessions#new', as: 'home'
-  get 'inside', to: 'workouts#index', as: 'inside'
 
   devise_for :users
 
