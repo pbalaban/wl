@@ -50,6 +50,6 @@ class ExerciseItemsController < ApplicationController
     end
 
     def exercise_item_params
-      params.require(:exercise_item).permit(:workout_id, :exercise_id, :time, :repeats_count, :value)
+      params.require(:exercise_item).permit(:workout_id, :exercise_id, :time, :repeats_count, :weight)
     end
 end

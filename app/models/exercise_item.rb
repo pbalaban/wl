@@ -4,9 +4,7 @@ class ExerciseItem < ActiveRecord::Base
 
   validates :exercise,  presence: true
   validates :repeats_count, presence: true, numericality: { greater_than: 0 }
+  validates :weight, numericality: { greater_than: 0 }, allow_blank: true
 
-
-  def exercise_name
-    exercise.name if exercise
-  end
+  delegate :name, allow_nil: true, prefix: true, to: :exercise
 end
