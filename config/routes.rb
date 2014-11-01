@@ -4,10 +4,10 @@ Wl::Application.routes.draw do
   resources :places
   resources :workouts
   resources :exercises
-  root "pages#home"
+  root 'pages#home'
 
-  get "home", to: "pages#home", as: "home"
-  get "inside", to: "pages#inside", as: "inside"
+  get 'home', to: 'devise/sessions#new', as: 'home'
+  get 'inside', to: 'workouts#index', as: 'inside'
 
   devise_for :users
 
