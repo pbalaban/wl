@@ -7,11 +7,15 @@ class User < ActiveRecord::Base
   # Pagination
   paginates_per 100
   has_many :places
+
   # Validations
   with_options presence: true do |pt|
     pt.validates :first_name
     pt.validates :last_name
   end
+
+  # Callbacks
+  before_save :ensure_access_token
 
   def self.paged(page_number)
     order(admin: :desc, email: :asc).page page_number
@@ -39,4 +43,16 @@ class User < ActiveRecord::Base
   def self.users_count
     where('admin = ? AND locked = ?', false, false).count
   end
+
+  private
+    def ensure_access_token
+      self.access_token ||= generate_access_token
+    end
+
+    def generate_access_token
+      loop do
+        token = Devise.friendly_token
+        break token unless self.class.where(access_token: token).first
+      end
+    end
 end
