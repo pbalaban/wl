@@ -8,8 +8,10 @@ class User < ActiveRecord::Base
   paginates_per 100
   has_many :places
   # Validations
-  # :email
-  validates_format_of :email, with: /\A([^@\s]+)@((?:[-a-z0-9]+\.)+[a-z]{2,})\Z/i
+  with_options presence: true do |pt|
+    pt.validates :first_name
+    pt.validates :last_name
+  end
 
   def self.paged(page_number)
     order(admin: :desc, email: :asc).page page_number
