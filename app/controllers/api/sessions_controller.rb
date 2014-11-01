@@ -7,7 +7,7 @@ class Api::SessionsController < ApiController
     @user = User.find_by(user_params.slice(:email))
 
     #TODO: make it with devise method, handle inactive account, etc.
-    if @user.valid_password?(user_params[:password])
+    if @user.try(:valid_password?, user_params[:password])
       respond_with(@user, location: nil)
     else
       render json: { message: I18n.t(:"devise.failure.invalid", authentication_keys: :email) }, status: 422
