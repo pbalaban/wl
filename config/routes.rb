@@ -17,4 +17,10 @@ Wl::Application.routes.draw do
     root 'base#index'
     resources :users
   end
+
+  namespace :api do
+    scope :v1 do
+      resources :users, only: :create
+    end
+  end
 end
