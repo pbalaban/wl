@@ -1,8 +1,11 @@
 class ExercisesController < ApplicationController
+  respond_to :html
+  before_action :authenticate_user!
+  before_action :load_place
   before_action :set_exercise, only: [:show, :edit, :update, :destroy]
 
   def index
-    @exercises = Exercise.all
+    @exercises = @place.exercises
     respond_with(@exercises)
   end
 
@@ -19,9 +22,9 @@ class ExercisesController < ApplicationController
   end
 
   def create
-    @exercise = Exercise.new(exercise_params)
+    @exercise = @place.exercises.build(exercise_params)
     @exercise.save
-    respond_with(@exercise)
+    respond_with([@place,@exercise])
   end
 
   def update
@@ -35,11 +38,16 @@ class ExercisesController < ApplicationController
   end
 
   private
+
+    def load_place
+      @place = current_user.places.find(params[:place_id])
+    end
+
     def set_exercise
       @exercise = Exercise.find(params[:id])
     end
 
     def exercise_params
-      params.require(:exercise).permit(:name, :values_type, :workout_id)
+      params.require(:exercise).permit(:name, :values_type, :place_id)
     end
 end

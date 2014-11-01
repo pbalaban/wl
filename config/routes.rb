@@ -1,9 +1,12 @@
 Wl::Application.routes.draw do
 
-  resources :exercise_items
-  resources :places
-  resources :workouts
-  resources :exercises
+  resources :places do
+    resources :workouts
+    resources :exercises do
+      resources :exercise_items
+    end
+  end
+
   root "pages#home"
 
   get "home", to: "pages#home", as: "home"

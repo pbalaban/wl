@@ -1,4 +1,4 @@
-= form_for(@exercise) do |f|
+= form_for([@place, @exercise]) do |f|
   - if @exercise.errors.any?
     #error_explanation
       %h2
@@ -15,9 +15,5 @@
     = f.label :values_type
     %br/
     = f.number_field :values_type
-  .field
-    = f.label :workout_id
-    %br/
-    = f.text_field :workout_id
   .actions
     = f.submit
