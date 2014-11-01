@@ -1,0 +1,12 @@
+# PostgreSQL
+#   Ensure the PostgreSQL gem is defined in your Gemfile
+#   gem 'pg'
+development:
+  adapter: mysql2
+  encoding: utf8
+  database: wl_development
+  username: root
+  host: localhost
+  pool: 5
+  # port: 5432
+
