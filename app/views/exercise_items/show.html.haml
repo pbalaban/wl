@@ -1,0 +1,21 @@
+%p#notice= notice
+
+%p
+  %b Workout:
+  = @exercise_item.workout
+%p
+  %b Exercise:
+  = @exercise_item.exercise
+%p
+  %b Time:
+  = @exercise_item.time
+%p
+  %b Repeats count:
+  = @exercise_item.repeats_count
+%p
+  %b Value:
+  = @exercise_item.value
+
+= link_to 'Edit', edit_exercise_item_path(@exercise_item)
+\|
+= link_to 'Back', exercise_items_path

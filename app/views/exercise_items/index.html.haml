@@ -1,0 +1,27 @@
+%h1 Listing exercise_items
+
+%table
+  %tr
+    %th Workout
+    %th Exercise
+    %th Time
+    %th Repeats count
+    %th Value
+    %th
+    %th
+    %th
+
+  - @exercise_items.each do |exercise_item|
+    %tr
+      %td= exercise_item.workout
+      %td= exercise_item.exercise
+      %td= exercise_item.time
+      %td= exercise_item.repeats_count
+      %td= exercise_item.value
+      %td= link_to 'Show', exercise_item
+      %td= link_to 'Edit', edit_exercise_item_path(exercise_item)
+      %td= link_to 'Destroy', exercise_item, :method => :delete, :data => { :confirm => 'Are you sure?' }
+
+%br
+
+= link_to 'New Exercise item', new_exercise_item_path

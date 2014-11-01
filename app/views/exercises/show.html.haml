@@ -1,0 +1,13 @@
+%p#notice= notice
+%p
+  %strong Name:
+  = @exercise.name
+%p
+  %strong Values type:
+  = @exercise.values_type
+%p
+  %strong Workout:
+  = @exercise.workout
+= link_to 'Edit', edit_exercise_path(@exercise)
+|
+\#{link_to 'Back', exercises_path}

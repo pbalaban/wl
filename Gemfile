@@ -23,7 +23,7 @@ gem 'font-awesome-sass', '4.2.2'
 # Bootstrap 3: https://github.com/twbs/bootstrap-sass
 gem 'bootstrap-sass', '3.3.0.1'
 
-# Figaro: https://github.com/laserlemon/figaro
+gem 'haml-rails'
 group :development, :test do
   gem 'figaro', '1.0.0'
 end
