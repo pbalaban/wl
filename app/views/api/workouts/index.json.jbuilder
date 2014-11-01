@@ -1,4 +1,1 @@
-json.array!(@workouts) do |workout|
-  json.extract! workout, :id, :date
-  json.place_name workout.place.name
-end
+json.partial! 'workout', collection: @workouts, as: :workout
