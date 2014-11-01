@@ -7,7 +7,7 @@ Wl::Application.routes.draw do
     end
   end
 
-  root "places#index"
+  root 'pages#home'
 
   get 'home', to: 'devise/sessions#new', as: 'home'
 
@@ -16,7 +16,5 @@ Wl::Application.routes.draw do
   namespace :admin do
     root 'base#index'
     resources :users
-
   end
-
 end
