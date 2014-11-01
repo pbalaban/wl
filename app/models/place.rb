@@ -6,7 +6,6 @@ class Place < ActiveRecord::Base
   include CommonApiScopes
 
   def current_workout
-    return @current_workout if @current_workout
-    @current_workout = workouts.where(date: Date.current).sorted.first
+    @current_workout ||= workouts.where(date: Date.current).sorted.first
   end
 end
