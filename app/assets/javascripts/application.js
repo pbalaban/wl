@@ -15,4 +15,4 @@
 //= require turbolinks
 //= require bootstrap 
 //= require common
-
+//= require_tree .

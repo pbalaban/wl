@@ -7,10 +7,7 @@
   %b Description:
   = @place.description
 
-= link_to 'Edit', edit_place_path(@place)
-\|
-= link_to 'Back', places_path
-\|
-= link_to 'Workouts', [@place, :workouts]
-\|
-= link_to 'Exercises', [@place, :exercises]
+%h3 Workouts
+= render @place.workouts
+%hr/
+= render 'workouts/form'

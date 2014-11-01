@@ -4,6 +4,7 @@ class Place < ActiveRecord::Base
   has_many :workouts
 
   include CommonApiScopes
+  validates :name, presence: true
 
   def current_workout
     @current_workout ||= workouts.where(date: Date.current).sorted.first

@@ -8,7 +8,7 @@
     - @workouts.each do |workout|
       %tr
         %td= workout.created_at.strftime('%m/%d/%Y %I:%M%p')
-        %td= link_to 'Show', [@place, workout]
+        %td= link_to workout.created_at.strftime('%m/%d/%Y %I:%M%p'), [@place, workout]
 
 %br/
 = render 'form'

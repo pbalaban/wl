@@ -8,15 +8,17 @@
 
   .field
     = f.label :exercise
-    = f.select :exercise_id, @place.exercises.map {|ex| [ex.name, ex.id] }
-  .field
-    = f.label :time
-    = f.number_field :time
+    = f.select :exercise_id, @place.exercises.map {|ex| [ex.name, ex.id, {'data-need-weight' => ex.need_weight?}] }
   .field
     = f.label :repeats_count
     = f.number_field :repeats_count
+  .field{'data-scope'=>'weight'}
+    = f.label :weight
+    = f.number_field :weight
   .field
-    = f.label :value
-    = f.number_field :value
+    = f.label :time
+    %span
+      (in seconds. Optional)
+    = f.number_field :time
   .actions
     = f.submit 'Save'
