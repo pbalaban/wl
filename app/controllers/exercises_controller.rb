@@ -23,8 +23,11 @@ class ExercisesController < ApplicationController
 
   def create
     @exercise = @place.exercises.build(exercise_params)
-    @exercise.save
-    respond_with([@place,@exercise])
+    if @exercise.save
+      respond_with([@place,@exercise])
+    else
+      render :new
+    end
   end
 
   def update

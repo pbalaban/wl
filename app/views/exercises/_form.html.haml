@@ -13,7 +13,13 @@
     = f.text_field :name
   .field
     = f.label :values_type
-    %br/
+    %br
+      %div
+        Only times - we just need track times of execution. Example: Push ups, squats, etc
+      %div
+        Times and weights - we need know weight of inventory and times of execution: dumbbells, barbell
+    %br
     = f.select :values_type, Exercise::VALUES_TYPES
+  %br/
   .actions
     = f.submit
