@@ -1,6 +1,4 @@
 class Api::UsersController < ApiController
-  respond_to(:json)
-
   skip_before_action :verify_access_token
 
   def create

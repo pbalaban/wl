@@ -7,6 +7,7 @@ class User < ActiveRecord::Base
   # Pagination
   paginates_per 100
   has_many :places
+  has_many :workouts, through: :places
 
   # Validations
   with_options presence: true do |pt|

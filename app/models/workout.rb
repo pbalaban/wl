@@ -3,6 +3,10 @@ class Workout < ActiveRecord::Base
   has_many :exercise_items
   before_create :set_date
 
+  scope :sorted, ->{ order(created_at: :desc, id: :desc) }
+
+  validates :place_id, presence: true
+
   private
 
   def set_date

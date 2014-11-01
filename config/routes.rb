@@ -22,6 +22,10 @@ Wl::Application.routes.draw do
     scope :v1 do
       resources :users, only: :create
       resources :sessions, only: :create
+      resources :workouts, only: :index
+      resources :places, only: %i[index create] do
+        resources :workouts, only: %i[index create]
+      end
     end
   end
 end

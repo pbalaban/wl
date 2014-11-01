@@ -4,7 +4,7 @@ class WorkoutsController < ApplicationController
   before_action :set_workout, only: [:show, :edit, :update, :destroy]
 
   def index
-    @workouts = @place.workouts.order('created_at desc, id desc')
+    @workouts = @place.workouts.sorted
     respond_with(@workouts)
   end
 
