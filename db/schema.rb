@@ -13,6 +13,9 @@
 
 ActiveRecord::Schema.define(version: 20141101201153) do
 
+  # These are extensions that must be enabled in order to support this database
+  enable_extension "plpgsql"
+
   create_table "exercise_items", force: true do |t|
     t.integer  "workout_id",    null: false
     t.integer  "exercise_id",   null: false

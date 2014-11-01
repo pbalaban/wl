@@ -1,10 +1,11 @@
 FactoryGirl.define do
 
-  factory :exercise do
-    sequence(:name) { |n| "Exercise ##{n}" }
-    values_type { Exercise::VALUES_TYPES.map(&:last).sample }
-    muscle_group { Exercise::MUSCLE_GROUPS.sample }
-    association :place
+  factory :exercise_item do
+    association :exercise
+    association :workout
+    time 12
+    repeats_count 13
+    weight 20
   end
 
 end
