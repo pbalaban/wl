@@ -1,8 +1,10 @@
 class PlacesController < ApplicationController
+  respond_to :html
+  before_action :authenticate_user!
   before_action :set_place, only: [:show, :edit, :update, :destroy]
 
   def index
-    @places = Place.all
+    @places = current_user.places
     respond_with(@places)
   end
 
@@ -11,7 +13,7 @@ class PlacesController < ApplicationController
   end
 
   def new
-    @place = Place.new
+    @place = current_user.places.build
     respond_with(@place)
   end
 
@@ -19,7 +21,7 @@ class PlacesController < ApplicationController
   end
 
   def create
-    @place = Place.new(place_params)
+    @place = current_user.places.build(place_params)
     @place.save
     respond_with(@place)
   end
@@ -36,7 +38,7 @@ class PlacesController < ApplicationController
 
   private
     def set_place
-      @place = Place.find(params[:id])
+      @place = current_user.places.find(params[:id])
     end
 
     def place_params

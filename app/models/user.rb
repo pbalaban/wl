@@ -6,7 +6,7 @@ class User < ActiveRecord::Base
 
   # Pagination
   paginates_per 100
-
+  has_many :places
   # Validations
   # :email
   validates_format_of :email, with: /\A([^@\s]+)@((?:[-a-z0-9]+\.)+[a-z]{2,})\Z/i
