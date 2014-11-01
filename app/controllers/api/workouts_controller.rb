@@ -1,5 +1,5 @@
 class Api::WorkoutsController < ApiController
-  before_action :load_workout, only: %i[show destroy]
+  before_action :load_workout, only: %i(show destroy)
 
   def index
     @workouts = begin_search_chain.workouts.includes(:place).sorted.limit_with(params[:limit]).load
@@ -20,11 +20,12 @@ class Api::WorkoutsController < ApiController
   end
 
   private
-    def begin_search_chain
-      params[:place_id] ? current_user.places.find(params[:place_id]) : current_user
-    end
 
-    def load_workout
-      @workout = current_user.workouts.find(params[:id])
-    end
+  def begin_search_chain
+    params[:place_id] ? current_user.places.find(params[:place_id]) : current_user
+  end
+
+  def load_workout
+    @workout = current_user.workouts.find(params[:id])
+  end
 end

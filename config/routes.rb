@@ -22,9 +22,9 @@ Wl::Application.routes.draw do
     scope :v1 do
       resources :users, only: :create
       resources :sessions, only: :create
-      resources :workouts, only: %i[index show destroy]
-      resources :places, except: %i[new edit update] do
-        resources :workouts, only: %i[index create]
+      resources :workouts, only: %i(index show destroy)
+      resources :places, except: %i(new edit update) do
+        resources :workouts, only: %i(index create)
       end
     end
   end

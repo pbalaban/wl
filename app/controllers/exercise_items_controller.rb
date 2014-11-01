@@ -40,16 +40,16 @@ class ExerciseItemsController < ApplicationController
 
   private
 
-    def load_place_and_workout
-      @place = current_user.places.find(params[:place_id])
-      @workout = @place.workouts.find(params[:workout_id])
-    end
+  def load_place_and_workout
+    @place = current_user.places.find(params[:place_id])
+    @workout = @place.workouts.find(params[:workout_id])
+  end
 
-    def set_exercise_item
-      @exercise_item = ExerciseItem.find(params[:id])
-    end
+  def set_exercise_item
+    @exercise_item = ExerciseItem.find(params[:id])
+  end
 
-    def exercise_item_params
-      params.require(:exercise_item).permit(:workout_id, :exercise_id, :time, :repeats_count, :weight)
-    end
+  def exercise_item_params
+    params.require(:exercise_item).permit(:workout_id, :exercise_id, :time, :repeats_count, :weight)
+  end
 end

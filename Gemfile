@@ -49,4 +49,3 @@ group :test do
   gem 'database_cleaner'
   gem 'launchy'
 end
-

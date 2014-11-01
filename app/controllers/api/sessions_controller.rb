@@ -4,7 +4,7 @@ class Api::SessionsController < ApiController
   def create
     @user = User.find_by(user_params.slice(:email))
 
-    #TODO: make it with devise method, handle inactive account, etc.
+    # TODO: make it with devise method, handle inactive account, etc.
     if @user.try(:valid_password?, user_params[:password])
       respond_with(@user, location: nil)
     else
@@ -13,7 +13,8 @@ class Api::SessionsController < ApiController
   end
 
   private
-    def user_params
-      params.require(:user).permit(:email, :password)
-    end
+
+  def user_params
+    params.require(:user).permit(:email, :password)
+  end
 end

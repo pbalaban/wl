@@ -24,7 +24,7 @@ class ExercisesController < ApplicationController
   def create
     @exercise = @place.exercises.build(exercise_params)
     if @exercise.save
-      respond_with([@place,@exercise])
+      respond_with([@place, @exercise])
     else
       render :new
     end
@@ -32,7 +32,7 @@ class ExercisesController < ApplicationController
 
   def update
     if @exercise.update(exercise_params)
-      respond_with([@place,@exercise])
+      respond_with([@place, @exercise])
     else
       render :edit
     end
@@ -40,20 +40,20 @@ class ExercisesController < ApplicationController
 
   def destroy
     @exercise.destroy
-    respond_with([@place,@exercise])
+    respond_with([@place, @exercise])
   end
 
   private
 
-    def load_place
-      @place = current_user.places.find(params[:place_id])
-    end
+  def load_place
+    @place = current_user.places.find(params[:place_id])
+  end
 
-    def set_exercise
-      @exercise = Exercise.find(params[:id])
-    end
+  def set_exercise
+    @exercise = Exercise.find(params[:id])
+  end
 
-    def exercise_params
-      params.require(:exercise).permit(:name, :values_type, :place_id, :muscle_group)
-    end
+  def exercise_params
+    params.require(:exercise).permit(:name, :values_type, :place_id, :muscle_group)
+  end
 end

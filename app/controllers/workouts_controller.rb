@@ -14,7 +14,6 @@ class WorkoutsController < ApplicationController
     respond_with(@workout)
   end
 
-
   def create
     @workout = @place.workouts.create
     respond_with([@place, @workout])
@@ -27,15 +26,15 @@ class WorkoutsController < ApplicationController
 
   private
 
-    def load_place
-      @place = current_user.places.find(params[:place_id])
-    end
+  def load_place
+    @place = current_user.places.find(params[:place_id])
+  end
 
-    def set_workout
-      @workout = Workout.find(params[:id])
-    end
+  def set_workout
+    @workout = Workout.find(params[:id])
+  end
 
-    def workout_params
-      params.require(:workout).permit(:date)
-    end
+  def workout_params
+    params.require(:workout).permit(:date)
+  end
 end

@@ -42,14 +42,15 @@ class User < ActiveRecord::Base
   end
 
   private
-    def ensure_access_token
-      self.access_token ||= generate_access_token
-    end
 
-    def generate_access_token
-      loop do
-        token = Devise.friendly_token
-        break token unless self.class.where(access_token: token).first
-      end
+  def ensure_access_token
+    self.access_token ||= generate_access_token
+  end
+
+  def generate_access_token
+    loop do
+      token = Devise.friendly_token
+      break token unless self.class.where(access_token: token).first
     end
+  end
 end

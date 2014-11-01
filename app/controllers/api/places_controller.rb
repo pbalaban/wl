@@ -1,5 +1,5 @@
 class Api::PlacesController < ApiController
-  before_action :load_place, only: %i[show destroy]
+  before_action :load_place, only: %i(show destroy)
 
   def index
     @places = current_user.places.limit_with(params[:limit]).load
@@ -19,11 +19,12 @@ class Api::PlacesController < ApiController
   end
 
   private
-    def place_params
-      params.require(:place).permit(*%i[name description])
-    end
 
-    def load_place
-      @place = current_user.places.find(params[:id])
-    end
+  def place_params
+    params.require(:place).permit(*%i(name description))
+  end
+
+  def load_place
+    @place = current_user.places.find(params[:id])
+  end
 end
