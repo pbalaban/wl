@@ -31,8 +31,11 @@ class ExercisesController < ApplicationController
   end
 
   def update
-    @exercise.update(exercise_params)
-    respond_with([@place,@exercise])
+    if @exercise.update(exercise_params)
+      respond_with([@place,@exercise])
+    else
+      render :edit
+    end
   end
 
   def destroy

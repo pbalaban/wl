@@ -1,0 +1,14 @@
+%h1 Listing workouts
+
+%table
+  %thead
+    %tr
+      %th Time
+  %tbody
+    - @workouts.each do |workout|
+      %tr
+        %td= workout.created_at.strftime('%m/%d/%Y %I:%M%p')
+        %td= link_to 'Show', [@place, workout]
+
+%br/
+= render 'form'

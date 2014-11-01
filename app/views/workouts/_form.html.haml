@@ -1,15 +1,3 @@
-= form_for(@workout) do |f|
-  - if @workout.errors.any?
-    #error_explanation
-      %h2
-        = pluralize(@workout.errors.count, "error")
-        prohibited this workout from being saved:
-      %ul
-        - @workout.errors.full_messages.each do |message|
-          %li= message
-  .field
-    = f.label :date
-    %br/
-    = f.date_select :date
+= form_for([@place, Workout.new]) do |f|
   .actions
-    = f.submit
+    = f.submit 'Start workout'

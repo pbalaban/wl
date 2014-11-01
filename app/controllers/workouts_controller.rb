@@ -1,9 +1,10 @@
 class WorkoutsController < ApplicationController
-  before_action :set_workout, only: [:show, :edit, :update, :destroy]
   respond_to :html
+  before_action :load_place
+  before_action :set_workout, only: [:show, :edit, :update, :destroy]
 
   def index
-    @workouts = Workout.all
+    @workouts = @place.workouts.order('created_at desc, id desc')
     respond_with(@workouts)
   end
 
@@ -11,23 +12,10 @@ class WorkoutsController < ApplicationController
     respond_with(@workout)
   end
 
-  def new
-    @workout = Workout.new
-    respond_with(@workout)
-  end
-
-  def edit
-  end
 
   def create
-    @workout = Workout.new(workout_params)
-    @workout.save
-    respond_with(@workout)
-  end
-
-  def update
-    @workout.update(workout_params)
-    respond_with(@workout)
+    @workout = @place.workouts.create
+    respond_with([@place, @workout])
   end
 
   def destroy
@@ -36,6 +24,11 @@ class WorkoutsController < ApplicationController
   end
 
   private
+
+    def load_place
+      @place = current_user.places.find(params[:place_id])
+    end
+
     def set_workout
       @workout = Workout.find(params[:id])
     end
