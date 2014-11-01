@@ -24,7 +24,7 @@ module Wl
     I18n.enforce_available_locales = false
 
     # Test framework
-    config.generators.test_framework false
+    config.generators.test_framework :rspec
 
     # autoload lib path
     config.autoload_paths += %W(#{config.root}/lib)
