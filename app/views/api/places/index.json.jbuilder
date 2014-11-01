@@ -1,3 +1,1 @@
-json.array!(@places) do |place|
-  json.extract! place, :id, :name, :description
-end
+json.partial! 'place', collection: @places, as: :place
