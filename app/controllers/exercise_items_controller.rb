@@ -1,4 +1,5 @@
 class ExerciseItemsController < ApplicationController
+  before_action :load_place_and_workout
   before_action :set_exercise_item, only: [:show, :edit, :update, :destroy]
 
   def index
@@ -19,9 +20,12 @@ class ExerciseItemsController < ApplicationController
   end
 
   def create
-    @exercise_item = ExerciseItem.new(exercise_item_params)
-    @exercise_item.save
-    respond_with(@exercise_item)
+    @exercise_item = @workout.exercise_items.build(exercise_item_params)
+    if @exercise_item.save
+      redirect_to [@place, @workout]
+    else
+      render :new
+    end
   end
 
   def update
@@ -35,6 +39,12 @@ class ExerciseItemsController < ApplicationController
   end
 
   private
+
+    def load_place_and_workout
+      @place = current_user.places.find(params[:place_id])
+      @workout = @place.workouts.find(params[:workout_id])
+    end
+
     def set_exercise_item
       @exercise_item = ExerciseItem.find(params[:id])
     end

@@ -6,7 +6,9 @@ class Exercise < ActiveRecord::Base
   #We must provide validations and filling forms agree to expected input type.
 
   VALUES_TYPES = [['Only times', 0], ['Times and weights', 1]]
+  MUSCLE_GROUPS = [:legs, :ass, :hands, :neck, :back, :press]
+
   belongs_to :place
 
-  validates :name, :values_type, presence: true
+  validates :name, :values_type, :muscle_group, presence: true
 end

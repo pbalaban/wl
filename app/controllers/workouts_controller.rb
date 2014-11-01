@@ -9,6 +9,8 @@ class WorkoutsController < ApplicationController
   end
 
   def show
+    @items = @workout.exercise_items
+    @exercise_item = ExerciseItem.new
     respond_with(@workout)
   end
 

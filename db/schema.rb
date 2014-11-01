@@ -11,10 +11,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20141101163430) do
-
-  # These are extensions that must be enabled in order to support this database
-  enable_extension "plpgsql"
+ActiveRecord::Schema.define(version: 20141101173555) do
 
   create_table "exercise_items", force: true do |t|
     t.integer  "workout_id",    null: false
@@ -30,11 +27,12 @@ ActiveRecord::Schema.define(version: 20141101163430) do
   add_index "exercise_items", ["workout_id"], name: "index_exercise_items_on_workout_id", using: :btree
 
   create_table "exercises", force: true do |t|
-    t.string   "name",        null: false
-    t.integer  "values_type", null: false
-    t.integer  "place_id",    null: false
+    t.string   "name",         null: false
+    t.integer  "values_type",  null: false
+    t.integer  "place_id",     null: false
     t.datetime "created_at"
     t.datetime "updated_at"
+    t.string   "muscle_group", null: false
   end
 
   add_index "exercises", ["place_id"], name: "index_exercises_on_place_id", using: :btree

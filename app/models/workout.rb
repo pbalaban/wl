@@ -1,6 +1,6 @@
 class Workout < ActiveRecord::Base
   belongs_to :place
-
+  has_many :exercise_items
   before_create :set_date
 
   private

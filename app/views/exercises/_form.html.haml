@@ -12,6 +12,10 @@
     %br/
     = f.text_field :name
   .field
+    = f.label :muscle_group
+    %br/
+    = f.select :muscle_group, Exercise::MUSCLE_GROUPS
+  .field
     = f.label :values_type
     %br
       %div

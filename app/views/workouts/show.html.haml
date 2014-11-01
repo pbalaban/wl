@@ -2,3 +2,8 @@
 %p
   %strong Start time:
   = @workout.created_at.strftime('%m/%d/%Y %I:%M%p')
+%h3 Done items
+= render @items
+
+%h3 New exercise
+= render 'exercise_items/form'

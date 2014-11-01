@@ -54,6 +54,6 @@ class ExercisesController < ApplicationController
     end
 
     def exercise_params
-      params.require(:exercise).permit(:name, :values_type, :place_id)
+      params.require(:exercise).permit(:name, :values_type, :place_id, :muscle_group)
     end
 end

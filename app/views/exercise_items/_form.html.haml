@@ -1,4 +1,4 @@
-= form_for @exercise_item do |f|
+= form_for [@place, @workout, @exercise_item] do |f|
   - if @exercise_item.errors.any?
     #error_explanation
       %h2= "#{pluralize(@exercise_item.errors.count, "error")} prohibited this exercise_item from being saved:"
@@ -7,11 +7,8 @@
           %li= msg
 
   .field
-    = f.label :workout
-    = f.text_field :workout
-  .field
     = f.label :exercise
-    = f.text_field :exercise
+    = f.select :exercise_id, @place.exercises.map {|ex| [ex.name, ex.id] }
   .field
     = f.label :time
     = f.number_field :time

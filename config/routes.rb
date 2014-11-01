@@ -1,10 +1,10 @@
 Wl::Application.routes.draw do
 
   resources :places do
-    resources :workouts
-    resources :exercises do
+    resources :workouts do
       resources :exercise_items
     end
+    resources :exercises
   end
 
   root 'pages#home'
